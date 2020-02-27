@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Word = require('./models/Words');
 
 router.get('/', (req, res) => {
   Word.find({}).then(words => {
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 //add a new word
-router.delete('/addWord', (req, res) => {
+router.post('/addWord', (req, res) => {
   const { word, definition } = req.body;
 
   if (!word || !definition) {
